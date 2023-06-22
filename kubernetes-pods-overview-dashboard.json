@@ -1188,7 +1188,7 @@
           "type": "prometheus",
           "uid": "$source"
         },
-        "definition": "label_values(kube_pod_info{cluster=~\"$cluster\",exported_namespace=~\"$namespace\"}, pod)",
+        "definition": "label_values(kube_pod_info{cluster=~\"$cluster\",exported_namespace=~\"$namespace\"}, exported_pod)",
         "hide": 0,
         "includeAll": true,
         "label": "Pod",
@@ -1196,7 +1196,7 @@
         "name": "pod",
         "options": [],
         "query": {
-          "query": "label_values(kube_pod_info{cluster=~\"$cluster\",exported_namespace=~\"$namespace\"}, pod)",
+          "query": "label_values(kube_pod_info{cluster=~\"$cluster\",exported_namespace=~\"$namespace\"}, exported_pod)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
