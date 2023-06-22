@@ -104,7 +104,7 @@
             "uid": "${source}"
           },
           "exemplar": true,
-          "expr": "increase(kube_pod_container_status_restarts_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\",exported_pod=~\"$pod\",container=~\"$container\",container!=\"POD\"}[10m])",
+          "expr": "increase(kube_pod_container_status_restarts_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\",exported_pod=~\"$pod\",exported_container=~\"$container\",exported_container=!\"POD\"}[10m])",
           "interval": "",
           "legendFormat": "{{pod}}/{{container}}",
           "queryType": "randomWalk",
@@ -203,7 +203,7 @@
             "uid": "$source"
           },
           "exemplar": true,
-          "expr": "rate(container_cpu_usage_seconds_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\",exported_pod=~\"$pod\",container=~\"$container\",container!=\"POD\",image!=\"\"}[1m])",
+          "expr": "rate(container_cpu_usage_seconds_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\",exported_pod=~\"$pod\",exported_container=~\"$container\",exported_container=!\"POD\",image!=\"\"}[1m])",
           "instant": false,
           "interval": "",
           "intervalFactor": 2,
@@ -216,7 +216,7 @@
             "uid": "$source"
           },
           "exemplar": true,
-          "expr": "kube_pod_container_resource_requests{resource=\"cpu\",cluster=~\"$cluster\",exported_namespace=~\"$namespace\",exported_pod=~\"$pod\",container=~\"$container\"}",
+          "expr": "kube_pod_container_resource_requests{resource=\"cpu\",cluster=~\"$cluster\",exported_namespace=~\"$namespace\",exported_pod=~\"$pod\",exported_container=~\"$container\"}",
           "interval": "15s",
           "intervalFactor": 4,
           "legendFormat": "Request: {{pod}}/{{ container }}",
@@ -229,7 +229,7 @@
             "uid": "$source"
           },
           "exemplar": true,
-          "expr": "kube_pod_container_resource_limits{resource=\"cpu\",cluster=~\"$cluster\",exported_namespace=~\"$namespace\",exported_pod=~\"$pod\",container=~\"$container\"}",
+          "expr": "kube_pod_container_resource_limits{resource=\"cpu\",cluster=~\"$cluster\",exported_namespace=~\"$namespace\",exported_pod=~\"$pod\",exported_container=~\"$container\"}",
           "interval": "15s",
           "intervalFactor": 4,
           "legendFormat": "Limit: {{pod}}/{{ container }}",
@@ -327,7 +327,7 @@
             "uid": "$source"
           },
           "exemplar": true,
-          "expr": "container:cpu:throttled:ratio{cluster=~\"$cluster\",exported_namespace=~\"$namespace\",exported_pod=~\"$pod\",container=~\"$container\",container!=\"POD\",image!=\"\"}",
+          "expr": "container:cpu:throttled:ratio{cluster=~\"$cluster\",exported_namespace=~\"$namespace\",exported_pod=~\"$pod\",exported_container=~\"$container\",exported_container=!\"POD\",image!=\"\"}",
           "instant": false,
           "interval": "",
           "intervalFactor": 1,
@@ -428,7 +428,7 @@
             "uid": "$source"
           },
           "exemplar": true,
-          "expr": "container_memory_usage_bytes{cluster=~\"$cluster\",exported_pod=~\"$pod\", container=~\"$container\", container!=\"POD\", container!=\"\"}",
+          "expr": "container_memory_usage_bytes{cluster=~\"$cluster\",exported_pod=~\"$pod\",exported_container=~\"$container\", exported_container=!\"POD\", exported_container=!\"\"}",
           "instant": false,
           "interval": "",
           "intervalFactor": 2,
@@ -442,7 +442,7 @@
             "uid": "$source"
           },
           "exemplar": true,
-          "expr": "kube_pod_container_resource_requests{resource=\"memory\",cluster=~\"$cluster\",exported_pod=~\"$pod\", container=~\"$container\"}",
+          "expr": "kube_pod_container_resource_requests{resource=\"memory\",cluster=~\"$cluster\",exported_pod=~\"$pod\",exported_container=~\"$container\"}",
           "interval": "15s",
           "intervalFactor": 2,
           "legendFormat": "Request: {{pod}}/{{ container }}",
@@ -455,7 +455,7 @@
             "uid": "$source"
           },
           "exemplar": true,
-          "expr": "kube_pod_container_resource_limits{resource=\"memory\",cluster=~\"$cluster\",exported_pod=~\"$pod\", container=~\"$container\"}",
+          "expr": "kube_pod_container_resource_limits{resource=\"memory\",cluster=~\"$cluster\",exported_pod=~\"$pod\",exported_container=~\"$container\"}",
           "interval": "15s",
           "intervalFactor": 2,
           "legendFormat": "Limit: {{pod}}/{{ container }}",
@@ -770,7 +770,7 @@
             "uid": "$source"
           },
           "exemplar": true,
-          "expr": "container_fs_usage_bytes{cluster=~\"$cluster\",exported_namespace=~\"$namespace\",exported_pod=~\"$pod\",container=~\"$container\"}",
+          "expr": "container_fs_usage_bytes{cluster=~\"$cluster\",exported_namespace=~\"$namespace\",exported_pod=~\"$pod\",exported_container=~\"$container\"}",
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{pod}}/{{container}}",
@@ -866,7 +866,7 @@
             "uid": "$source"
           },
           "exemplar": true,
-          "expr": "increase(container_fs_reads_bytes_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\",exported_pod=~\"$pod\",container=~\"$container\"}[1m])",
+          "expr": "increase(container_fs_reads_bytes_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\",exported_pod=~\"$pod\",exported_container=~\"$container\"}[1m])",
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "Reads: {{pod}}/{{container}}",
@@ -975,7 +975,7 @@
             "uid": "$source"
           },
           "exemplar": true,
-          "expr": "increase(container_fs_writes_bytes_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\",exported_pod=~\"$pod\",container=~\"$container\"}[1m])",
+          "expr": "increase(container_fs_writes_bytes_total{cluster=~\"$cluster\",exported_namespace=~\"$namespace\",exported_pod=~\"$pod\",exported_container=~\"$container\"}[1m])",
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "Reads: {{pod}}/{{container}}",
@@ -1071,7 +1071,7 @@
             "uid": "$source"
           },
           "exemplar": true,
-          "expr": "container_file_descriptors{cluster=~\"$cluster\",exported_namespace=~\"$namespace\",exported_pod=~\"$pod\",container=~\"$container\"}",
+          "expr": "container_file_descriptors{cluster=~\"$cluster\",exported_namespace=~\"$namespace\",exported_pod=~\"$pod\",exported_container=~\"$container\"}",
           "interval": "",
           "intervalFactor": 1,
           "legendFormat": "{{pod}}/{{container}}",
@@ -1231,7 +1231,7 @@
         "name": "container",
         "options": [],
         "query": {
-          "query": "label_values(kube_pod_container_info{cluster=~\"$cluster\",exported_namespace=~\"$namespace\",exported_pod=~\"$pod\"}, container)",
+          "query": "label_values(kube_pod_container_info{cluster=~\"$cluster\",exported_namespace=~\"$namespace\",exported_pod=~\"$pod\"}, exported_container)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
